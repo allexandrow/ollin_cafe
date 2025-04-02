@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Pedido</title>
+  
+  <!-- Scripts de Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  
+  <!-- Script de EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <style>
+    .toast {
+      visibility: hidden;
+      max-width: 50%;
+      margin-left: -125px;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      border-radius: 2px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      font-size: 17px;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .toast.show {
+      visibility: visible;
+      animation: fadeInOut 3s;
+    }
+
+    @keyframes fadeInOut {
+      0% {bottom: 30px; opacity: 0;}
+      30% {bottom: 30px; opacity: 1;}
+      100% {bottom: 30px; opacity: 0;}
+    }
+
+    .toast.exito {
+      background-color: #4CAF50;
+    }
+
+    .toast.error {
+      background-color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <h1>Realiza tu pedido</h1>
+  <form id="pedidoForm">
+    <label for="cliente">Nombre del cliente:</label><br>
+    <input type="text" id="cliente" name="cliente" required><br><br>
+    
+    <label for="productos">Productos (separados por comas):</label><br>
+    <input type="text" id="productos" name="productos" required><br><br>
+    
+    <label for="total">Total:</label><br>
+    <input type="number" id="total" name="total" required><br><br>
+    
+    <button type="submit">Enviar Pedido</button>
+  </form>
+
+  <!-- Contenedor para las notificaciones toast -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // Inicializar EmailJS
+    emailjs.init("template_6gz50uh"); // Reemplaza con tu user ID de EmailJS
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_STORAGE_BUCKET",
+      messagingSenderId: "TU_MESSAGING_SENDER_ID",
+      appId: "TU_APP_ID"
+    };
+
+    // Inicializar Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+
+    // Función para agregar un pedido a Firestore
+    function agregarPedido(cliente, productos, total) {
+      const fecha = new Date();
+      
+      // Añadir el pedido a Firestore
+      db.collection("pedidos").add({
+        cliente: cliente,
+        productos: productos,
+        total: total,
+        fecha: firebase.firestore.Timestamp.fromDate(fecha) // Agrega la fecha y hora
+      })
+      .then(() => {
+        mostrarToast("Pedido enviado correctamente", "exito");
+        // Enviar el pedido por correo electrónico
+        enviarCorreo(cliente, productos, total, fecha);
+      })
+      .catch((error) => {
+        mostrarToast("Error al enviar el pedido: " + error.message, "error");
+      });
+    }
+
+    // Función para mostrar las notificaciones toast
+    function mostrarToast(mensaje, tipo) {
+      const toastDiv = document.getElementById("toast");
+      toastDiv.textContent = mensaje;
+      toastDiv.className = `toast ${tipo}`;
+      toastDiv.style.visibility = "visible";
+      setTimeout(() => {
+        toastDiv.style.visibility = "hidden";
+      }, 3000);
+    }
+
+    // Función para enviar el correo con el pedido
+    function enviarCorreo(cliente, productos, total, fecha) {
+      const templateParams = {
+        cliente: cliente,
+        productos: productos,
+        total: total,
+        fecha: fecha.toLocaleString() // Convertimos la fecha a un formato legible
+      };
+
+      emailjs.send("template_6gz50uh", "template_6gz50uh", templateParams)
+        .then(function(response) {
+          console.log("Correo enviado", response);
+        }, function(error) {
+          console.error("Error al enviar correo", error);
+        });
+    }
+
+    // Evento al enviar el formulario
+    document.getElementById("pedidoForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevenir la recarga de la página al enviar el formulario
+      
+      // Obtener los valores del formulario
+      const cliente = document.getElementById("cliente").value;
+      const productos = document.getElementById("productos").value.split(",").map(producto => producto.trim());
+      const total = parseFloat(document.getElementById("total").value);
+      
+      // Llamar a la función para agregar el pedido a Firestore
+      agregarPedido(cliente, productos, total);
+      
+      // Limpiar el formulario
+      document.getElementById("pedidoForm").reset();
+    });
+  </script>
+</body>
+</html>

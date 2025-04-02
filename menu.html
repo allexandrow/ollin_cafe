@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1e5d6;
+            text-align: center;
+        }
+        header {
+            background-color: #6f4e37;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .menu, #orderSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .menu-item {
+            background-color: white;
+            padding: 20px;
+            margin: 30px 0;
+            width: 90%;
+            box-shadow: 0px 4px 6px rgba(20, 12, 12, 0.954);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .menu-item h3 {
+            margin: 0;
+            color: #000000;
+        }
+        .menu-item p {
+            margin: 5px 0;
+            color: #000;
+        }
+        .footer-buttons {
+            margin-top: 20px;
+        }
+        .footer-buttons button {
+            background-color: #6f4e37;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .footer-buttons button:hover {
+            background-color: #54392e;
+        }
+
+  /* Estilo de la sección de pedido */
+  
+
+
+
+
+
+        #specifications {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #6f4e36;
+        }
+        #placeOrder {
+            background-color: #6f4e37;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #placeOrder:hover {
+            background-color: #54392e;
+        }
+
+        /* Estilo de botón de "Volver al menú" */
+        #backToIntroButton {
+            background-color: #6f4e37;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #backToIntroButton:hover {
+            background-color: #54392e;
+        }
+
+    </style>
+</head>
+<body>
+<!--------------------------------------------------->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        #orderDetails {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<!---------------------------------------------------------->
+
+
+    <section id="menuSection" style="display: none;">
+        <!-- Contenido del menú -->
+    </section>
+    
+
+    <div class="menu" id="menuSection">
+        <h2>Nuestro Menú</h2>
+        <div class="menu-container">
+            <div class="menu-item">
+
+        <!--lista de productos-->
+        <h3>Cafés Clásicos</h3>
+        <div class="menu-item">
+            <h3>Americano</h3>
+            <p>Mediano: $45 | Grande: $60</p>
+            <p>Ingredientes: Café espresso, agua caliente.</p>
+            <button class="add-to-cart" data-name="Americano Mediano" data-price="45">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Americano Grande" data-price="60">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Capuchino</h3>
+            <p>Mediano: $50 | Grande: $65</p>
+            <p>Ingredientes: Espresso, leche vaporizada, espuma de leche.</p>
+        <button class="add-to-cart" data-name="Capuchino Mediano" data-price="50">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Capuchino Grande" data-price="65">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+           <h3>Latte</h3>
+            <p>Mediano: $50 | Grande: $65</p>
+            <p>Ingredientes: Espresso, leche vaporizada.</p> 
+            <button class="add-to-cart" data-name="Latte Mediano" data-price="50">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Latte Grande" data-price="65">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+           <h3>Cortado</h3>
+            <p>Mediano: $40 | Grande: $65</p>
+            <p>Ingredientes: Espresso, un toque de leche caliente.</p>
+             <button class="add-to-cart" data-name="Cortado Mediano" data-price="40">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Cortado Grande" data-price="65">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Espresso Doble</h3>
+            <p>Mediano: $40 | Grande: $55</p>
+            <p>Ingredientes: Doble espresso.</p>
+            <button class="add-to-cart" data-name="Espresso Doble Mediano" data-price="40">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Espresso Doble Grande" data-price="55">Agregar Grande</button>
+            
+        </div>
+        
+        <h3>Bebidas Dulces y Frías</h3>
+        <div class="menu-item">
+             <h3>Matcha Japonés</h3>
+            <p>Mediano: $65 | Grande: $70</p>
+            <p>Ingredientes: Té matcha, agua caliente.</p>
+            <button class="add-to-cart" data-name="Matcha Japonés Mediano" data-price="65">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Matcha Japonés Grande" data-price="70">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Matcha Latte</h3>
+            <p>Mediano: $70 | Grande: $75</p>
+            <p>Ingredientes: Té matcha, leche vaporizada.</p>
+            <button class="add-to-cart" data-name="Matcha Latte Mediano" data-price="70">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Matcha Latte Grande" data-price="75">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Matcha con Frutas</h3>
+            <p>Mediano: $65 | Grande: $75</p>
+            <p>Ingredientes: Té matcha, frutas naturales.</p>
+            <button class="add-to-cart" data-name="Matcha con Frutas Mediano" data-price="65">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Matcha con frutas Grande" data-price="75">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Frappes (Varios Sabores)</h3>
+            <p>Mediano: $65 | Grande: $75</p>
+            <p>Ingredientes: Hielo, leche, café o sabores varios.</p>
+            <button class="add-to-cart" data-name="Frappes Mediano" data-price="65">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Frappes Grande" data-price="75">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Smoothies (Varios Sabores)</h3>
+            <p>Mediano: $70 | Grande: $85</p>
+            <p>Ingredientes: Frutas naturales, leche o yogurt.</p>
+            <button class="add-to-cart" data-name="Smoothies Mediano" data-price="70">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Smoothies Grande" data-price="85">Agregar Grande</button>
+            
+        </div>
+        
+        <h3>Aguas y Refrescos</h3>
+        <div class="menu-item">
+            <h3>Agua Natural</h3>
+            <p>Mediano: $25 | Grande: $35</p>
+            <button class="add-to-cart" data-name="Agua Natural Mediano" data-price="25">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Agua Natural Grande" data-price="35">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Agua Mineral</h3>
+            <p>Mediano: $30 | Grande: $45</p>
+            <button class="add-to-cart" data-name="Agua Mineral Mediano" data-price="30">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Agua Mineral Grande" data-price="45">Agregar Grande</button>
+            
+        </div>
+        
+        <h3>Postres</h3>
+        <div class="menu-item">
+           <h3>Pastel Red Velvet</h3>
+            <p>Rebanada: $40 | Entero: $320</p>
+            <p>Ingredientes: Harina, cacao, queso crema.</p>
+            <button class="add-to-cart" data-name="Pastel Red Velvet Rebanada" data-price="40">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Pastel Red Velvet Entero" data-price="320">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+             <h3>Panal de Limón</h3>
+            <p>Rebanada: $40 | Entero: $320</p>
+            <p>Ingredientes: Harina, limón, azúcar.</p>
+            <button class="add-to-cart" data-name="Panal de limón Rebanada" data-price="40">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Panal de limón Entero" data-price="320">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Pastel de Zanahoria</h3>
+            <p>Rebanada: $55 | Entero: $440</p>
+            <p>Ingredientes: Zanahoria, harina, nueces, canela.</p>
+            <button class="add-to-cart" data-name="Pastel de Zanahoria Rebanada" data-price="55">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Pastel de Zanahoria Entero" data-price="440">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+             <h3>Tarta de Manzana</h3>
+            <p>Rebanada: $50 | Entero: $400</p>
+            <p>Ingredientes: Manzana, masa quebrada, canela.</p>
+            <button class="add-to-cart" data-name="Tarta de Manzana Rebanada" data-price="50">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Tarta de Manzana Entero" data-price="400">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Pie de Frutos Rojos</h3>
+            <p>Rebanada: $70 | Entero: $560</p>
+            <p>Ingredientes: Frutas rojas, masa quebrada.</p>
+            <button class="add-to-cart" data-name="Pie de frutos Rojos Rebanada" data-price="70">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Pie de Frutos Rojos Entero" data-price="560">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Flan Napolitano</h3>
+            <p>Rebanada: $45 | Entero: $220</p>
+            <p>Ingredientes: Leche, huevo, caramelo.</p>
+            <button class="add-to-cart" data-name="Flan Napolitano Rebanada" data-price="45">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Flan Napolitano Entero" data-price="220">Agregar Grande</button>
+            
+        </div>
+        <div class="menu-item">
+            <h3>Croissant Queso Crema</h3>
+            <p>Unidad: $40</p>
+            <p>Ingredientes: Masa hojaldrada, queso crema.</p>
+            <button class="add-to-cart" data-name="Croissant Queso Crema" data-price="40">Agregar Unidad</button>
+            
+        </div>
+        
+        <h3>Postres Saludables</h3>
+        <div class="menu-item">
+            <h3>Brownie Keto</h3>
+            <p>Precio: $50</p>
+            <p>Ingredientes: Harina de almendra, cacao, endulzante natural.</p>
+             <button class="add-to-cart" data-name="Brownie Keto" data-price="50">Agregar al Pedido</button>
+           
+        </div>
+        <div class="menu-item">
+
+            <h3>Dona Gluten Free</h3>
+            <p>Precio: $40</p>
+            <p>Ingredientes: Harina sin gluten, endulzante.</p>
+         <button class="add-to-cart" data-name="Dona Gluten Free" data-price="40">Agregar al Pedido</button>
+
+        </div>
+        <div class="menu-item">
+            <h3>Cheesecake Vegano</h3>
+            <p>Rebanada: $65 | Entero: $520</p>
+            <p>Ingredientes: Anacardos, leche de almendra, dátiles.</p>
+            <button class="add-to-cart" data-name="Cheesecake Vegano Rebanada" data-price="65">Agregar Mediano</button>
+            <button class="add-to-cart" data-name="Cheesecake Vegano Entero" data-price="520">Agregar Grande</button>
+            
+        </div>
+        
+        <h3>Comida</h3>
+        <div class="menu-item">
+            <h3>Ensalada de Pollo</h3>
+            <p>Precio: $65</p>
+            <p>Ingredientes: Lechuga, pollo, aderezo especial.</p>
+            <button class="add-to-cart" data-name="Ensalada de Pollo" data-price="65">Agregar al Pedido</button>
+
+        </div>
+        <div class="menu-item">
+            <h3>Ensalada Margarita</h3>
+            <p>Precio: $55</p>
+            <p>Ingredientes: Lechuga, tomate, queso.</p>
+            <button class="add-to-cart" data-name="Ensalada Margarita" data-price="55">Agregar al Pedido</button>
+
+        </div>
+        <div class="menu-item">
+             <h3>Ensalada Berries</h3>
+            <p>Precio: $55</p>
+            <p>Ingredientes: Lechuga, frutos rojos, aderezo.</p>
+            <button class="add-to-cart" data-name="Ensalada Berries" data-price="55">Agregar al Pedido</button>
+           
+        </div>
+        <div class="menu-item">
+            <h3>Sándwich Estilo Japonés</h3>
+            <p>Precio: $65</p>
+            <p>Ingredientes: Pan de leche, pollo, mayonesa.</p>
+            <button class="add-to-cart" data-name="Sándwich Estilo Japonés" data-price="65">Agregar al Pedido</button>
+
+        </div>
+        <div class="menu-item"> 
+            <h3>Bagels (Varios Sabores)</h3>
+            <p>Precio: $70</p>
+            <p>Ingredientes: Pan bagel, relleno según sabor.</p>
+            <button class="add-to-cart" data-name="Bagels" data-price="70">Agregar al Pedido</button>
+
+        </div>
+    </div>
+    <!--aqui tambien-->
+    <div id="orderSection">
+    <h2>Pedido</h2>
+        <ul id="orderList"></ul>
+
+<!-- Campo para especificaciones del pedido -->
+<textarea id="specifications" placeholder="Escribe tus especificaciones aquí..."></textarea>
+
+        <button id="placeOrder">Realizar Pedido</button>
+    </div>
+
+      <!-- Botón para regresar al inicio -->
+      <button id="backToIntroButton">Volver al Inicio</button>
+
+
+
+
+
+    <script>
+        let cart = [];
+
+// Función que agrega productos al carrito
+document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const productName = this.dataset.name;
+            const productPrice = this.dataset.price;
+
+
+     // Agregar al carrito
+     cart.push({ name: productName, price: productPrice });
+
+// Actualizar el carrito visualmente
+updateCartDisplay();
+});
+});
+
+// Actualizar la lista de detalles del carrito
+function updateCartDisplay() {
+const orderList = document.getElementById('orderList');
+orderList.innerHTML = '';  // Limpiar el contenido previo
+
+cart.forEach(item => {
+const li = document.createElement('li');
+li.textContent = `${item.name} - $${item.price}`;
+orderList.appendChild(li);
+});
+}
+
+// Función que envía el mensaje al chat de Telegram
+function enviarMensajeTelegram(pedido) {
+const token = '7917728140:AAFmy9ipK9QrrH5IbrMUFJ4ttEq7u69aWoU';  // Cambia por tu token real
+const chat_id = '-4727044093';  // Cambia por el chat_id de tu grupo
+
+const mensaje = `Nuevo pedido de cafetería: ${pedido}`;
+const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(mensaje)}`;
+
+fetch(url)
+.then(response => response.json())
+.then(data => {
+    if (data.ok) {
+        console.log("Mensaje enviado correctamente");
+    } else {
+        console.error("Error al enviar mensaje:", data.description);
+    }
+})
+.catch(error => {
+    console.error("Error en la solicitud:", error);
+});
+}
+
+// Función para realizar el pedido
+document.getElementById('placeOrder').addEventListener('click', function() {
+if (cart.length > 0) {
+let specifications = document.getElementById('specifications').value;
+let orderDetails = cart.map(item => `${item.name} x${item.price}`).join(', ');
+
+// Enviar el mensaje de Telegram con los detalles del pedido
+enviarMensajeTelegram(`Detalles del pedido: ${orderDetails}, Especificaciones: ${specifications}`);
+
+// Limpiar el carrito y la especificación
+cart = [];
+updateCartDisplay();
+document.getElementById('specifications').value = '';
+alert("Pedido realizado y enviado a Telegram.");
+} else {
+alert("El carrito está vacío.");
+}
+});
+
+
+//-------------------------------------------------
+
+        
+
+// Función para regresar al menú
+
+document.getElementById('backToIntroButton').addEventListener('click', function() {
+    window.history.back(); // Vuelve a la página anterior
+});
+
+
+
+document.getElementById('backToIntroButton').addEventListener('click', function() {
+            document.getElementById('menuSection').style.display = 'block';
+            document.getElementById('orderSection').style.display = 'none';
+        });
+
+    </script> 
+</body>
+</html>
